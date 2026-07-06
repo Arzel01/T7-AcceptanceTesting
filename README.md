@@ -1,12 +1,13 @@
-T7 - Acceptance Testing
+# T7 - Acceptance Testing
 
-Members
+## Members
 - José Adrián
 - Jaren Pazmiño
 - Alex Otero
 - Steve Robinson
 - Bruno Romero
 
+## Feature and Sceneario assignment
 | Member | Feature | 
 |--------|---------|
 | José Adrián | Add a product to the inventory |
