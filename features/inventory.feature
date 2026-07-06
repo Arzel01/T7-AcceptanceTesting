@@ -1,6 +1,6 @@
 #language : en
 
-Feature: Inventory Management
+Feature: Add a product to the inventory
 
   Scenario: Add a product to the inventory
     Given the inventory is empty
