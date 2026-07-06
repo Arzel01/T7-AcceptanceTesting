@@ -17,3 +17,9 @@ class InventoryManager:
 
     def has_product(self, name):
         return name in self.products
+
+    def update_quantity(self, name, quantity):
+        if name in self.products:
+            self.products[name].quantity = quantity 
+            return True
+        return False
