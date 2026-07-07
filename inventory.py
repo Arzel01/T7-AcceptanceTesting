@@ -9,6 +9,7 @@ class Product:
 class InventoryManager:
     def __init__(self):
         self.products = {}
+        self.combos = {}
 
     def add_product(self, product_id, name, quantity, price):
         if name in self.products:
@@ -33,3 +34,17 @@ class InventoryManager:
             del self.products[name]
             return True
         return False
+
+    def create_combo(self, combo_name, product_names):
+        for name in product_names:
+            if not self.has_product(name):
+                return False 
+        
+        self.combos[combo_name] = product_names
+        return True
+
+    def has_combo(self, combo_name):
+        return combo_name in self.combos
+
+    def get_combo_products(self, combo_name):
+        return self.combos.get(combo_name, [])

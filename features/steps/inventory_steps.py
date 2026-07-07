@@ -65,3 +65,18 @@ def step_impl_remove_product(context, product_name):
 @then('the inventory should not contain "{product_name}"')
 def step_impl_inventory_should_not_contain(context, product_name):
     assert not context.inventory.has_product(product_name), f'Product "{product_name}" was found in the inventory, but it should have been removed.'
+
+@when('the user creates a combo "{combo_name}" with "{products_str}"')
+def step_impl_create_combo(context, combo_name, products_str):
+    product_names = [p.strip() for p in products_str.split(',')]
+    context.inventory.create_combo(combo_name, product_names)
+
+
+@then('the inventory should contain the combo "{combo_name}" with "{products_str}"')
+def step_impl_verify_combo(context, combo_name, products_str):
+    expected_products = [p.strip() for p in products_str.split(',')]
+    
+    assert context.inventory.has_combo(combo_name), f'Combo "{combo_name}" was not found in the inventory.'
+    
+    actual_products = context.inventory.get_combo_products(combo_name)
+    assert actual_products == expected_products, f'Expected {expected_products} but got {actual_products}'

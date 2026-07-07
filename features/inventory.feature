@@ -24,3 +24,9 @@ Feature: Inventory Management
     Given the inventory contains a product "Coffee"
     When the user removes the product "Coffee"
     Then the inventory should not contain "Coffee"
+
+  Scenario: Create a composite product combo
+    Given the inventory contains a product "Coffee"
+    And the inventory contains a product "Sugar"
+    When the user creates a combo "Breakfast Pack" with "Coffee, Sugar"
+    Then the inventory should contain the combo "Breakfast Pack" with "Coffee, Sugar"
