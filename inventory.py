@@ -21,3 +21,9 @@ class InventoryManager:
 
     def list_products(self):
         return list(self.products.keys())
+
+    def remove_product(self, name):
+        if name in self.products:
+            del self.products[name]
+            return True
+        return False

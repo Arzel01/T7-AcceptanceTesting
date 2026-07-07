@@ -42,3 +42,13 @@ def step_impl_inventory_should_show_products(context, first_product, second_prod
     assert context.product_names == expected_products, (
         f'Expected products {expected_products}, but got {context.product_names}'
     )
+
+
+@when('the user removes the product "{product_name}"')
+def step_impl_remove_product(context, product_name):
+    context.inventory.remove_product(product_name)
+
+
+@then('the inventory should not contain "{product_name}"')
+def step_impl_inventory_should_not_contain(context, product_name):
+    assert not context.inventory.has_product(product_name), f'Product "{product_name}" was found in the inventory, but it should have been removed.'

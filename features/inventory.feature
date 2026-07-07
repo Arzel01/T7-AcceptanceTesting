@@ -12,3 +12,8 @@ Feature: Inventory Management
     And the inventory contains a product "Tea"
     When the user lists all products
     Then the inventory should show "Coffee" and "Tea"
+
+  Scenario: Remove a product from the inventory
+    Given the inventory contains a product "Coffee"
+    When the user removes the product "Coffee"
+    Then the inventory should not contain "Coffee"
