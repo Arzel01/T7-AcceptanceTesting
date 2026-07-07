@@ -56,3 +56,12 @@ def step_impl(context, product_name, product_quantity):
 @then('the inventory should show product “{product_name}” with quantity “{product_quantity}”')
 def step_impl(context, product_name, product_quantity):
     assert context.inventory.products[product_name].quantity == int(product_quantity), f'Product "{product_name}" has not the expected quantity'
+
+@when('the user removes the product "{product_name}"')
+def step_impl_remove_product(context, product_name):
+    context.inventory.remove_product(product_name)
+
+
+@then('the inventory should not contain "{product_name}"')
+def step_impl_inventory_should_not_contain(context, product_name):
+    assert not context.inventory.has_product(product_name), f'Product "{product_name}" was found in the inventory, but it should have been removed.'

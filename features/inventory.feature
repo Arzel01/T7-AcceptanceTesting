@@ -19,3 +19,8 @@ Feature: Inventory Management
     | Coffee | 10 | PROD-67 | 2.5 |
     When the user updates product “Coffee” to quantity “25”
     Then the inventory should show product “Coffee” with quantity “25”
+  
+  Scenario: Remove a product from the inventory
+    Given the inventory contains a product "Coffee"
+    When the user removes the product "Coffee"
+    Then the inventory should not contain "Coffee"

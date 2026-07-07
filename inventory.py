@@ -27,3 +27,9 @@ class InventoryManager:
             self.products[name].quantity = quantity 
             return True
         return False
+    
+    def remove_product(self, name):
+        if name in self.products:
+            del self.products[name]
+            return True
+        return False
